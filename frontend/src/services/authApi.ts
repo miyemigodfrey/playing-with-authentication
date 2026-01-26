@@ -18,61 +18,34 @@ const API_URL = 'http://localhost:3000';
 export async function loginApi(
   credentials: LoginCredentials,
 ): Promise<AuthResponse> {
-  /**
-   * 🎯 TODO FOR LEARNERS:
-   *
-   * Implement the login API call using fetch.
-   *
-   * Endpoint: POST /auth/login
-   * Body: { email, password }
-   *
-   * Steps:
-   * 1. Make a POST request to `${API_URL}/auth/login`
-   * 2. Set the Content-Type header to 'application/json'
-   * 3. Send the credentials in the request body
-   * 4. Check if the response is ok, if not throw an error
-   * 5. Parse and return the JSON response
-   *
-   * Example:
-   * const response = await fetch(`${API_URL}/auth/login`, {
-   *   method: 'POST',
-   *   headers: { 'Content-Type': 'application/json' },
-   *   body: JSON.stringify(credentials),
-   * });
-   */
 
-  // Remove this placeholder and implement the actual API call
-  console.log('TODO: Implement loginApi', credentials);
-  throw new Error(
-    'Login API not implemented yet. Check src/services/authApi.ts',
-  );
+const response = await fetch(`${API_URL}/auth/login`,{
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(credentials),
+  })
+  if (!response.ok) {
+    throw new Error('Login failed');
+  }
+  return response.json();
 }
+
 
 // TODO: Implement signup API call
 export async function signupApi(
   credentials: SignupCredentials,
 ): Promise<AuthResponse> {
-  /**
-   * 🎯 TODO FOR LEARNERS:
-   *
-   * Implement the signup API call using fetch.
-   *
-   * Endpoint: POST /auth/signup
-   * Body: { email, password, name }
-   *
-   * Steps:
-   * 1. Make a POST request to `${API_URL}/auth/signup`
-   * 2. Set the Content-Type header to 'application/json'
-   * 3. Send the credentials in the request body
-   * 4. Check if the response is ok, if not throw an error
-   * 5. Parse and return the JSON response
-   */
 
-  // Remove this placeholder and implement the actual API call
-  console.log('TODO: Implement signupApi', credentials);
-  throw new Error(
-    'Signup API not implemented yet. Check src/services/authApi.ts',
-  );
+const response = await fetch(`${API_URL}/auth/signup`,{
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(credentials),
+})  
+
+if(!response.ok){
+    throw new Error('Your Signup failed');
+  }
+  return response.json();
 }
 
 // TODO: Implement get profile API call
