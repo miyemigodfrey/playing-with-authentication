@@ -47,72 +47,58 @@ function DashboardPage() {
   }, [token]);
 
   return (
-    <div className='page'>
-      <h1 className='page-title'>Dashboard</h1>
-      <p className='page-description'>
-        Welcome to your protected dashboard, {user?.name}! 🎉
-      </p>
-
-      <div className='todo-notice'>
-        <h4>🎯 Learning Task</h4>
-        <p>
-          This page fetches data from a protected API endpoint. Implement{' '}
-          <code>getAllUsersApi</code> in <code>authApi.ts</code> to see the user
-          list!
-        </p>
+    <div className='space-y-6'>
+      <div>
+        <h1 className='text-2xl font-semibold'>Dashboard</h1>
+        <p className='text-slate-600'>Welcome to your protected dashboard, {user?.name}! 🎉</p>
       </div>
 
-      <div className='dashboard-grid'>
-        <div className='dashboard-stat'>
-          <h3>Your Email</h3>
-          <p>{user?.email || 'Loading...'}</p>
+      <div className='bg-yellow-50 border border-yellow-200 rounded p-4'>
+        <h4 className='font-medium'>🎯 Learning Task</h4>
+        <p className='text-sm text-yellow-800'>This page fetches data from a protected API endpoint. Implement <code>getAllUsersApi</code> in <code>authApi.ts</code> to see the user list!</p>
+      </div>
+
+      <div className='grid gap-6 grid-cols-1 md:grid-cols-3'>
+        <div className='p-4 rounded-lg text-white' style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+          <h3 className='text-sm opacity-80'>Your Email</h3>
+          <p className='text-2xl font-bold'>{user?.email || 'Loading...'}</p>
         </div>
-        <div
-          className='dashboard-stat'
-          style={{
-            background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
-          }}
-        >
-          <h3>Total Users</h3>
-          <p>{users.length}</p>
+        <div className='p-4 rounded-lg text-white' style={{ background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)' }}>
+          <h3 className='text-sm opacity-80'>Total Users</h3>
+          <p className='text-2xl font-bold'>{users.length}</p>
         </div>
-        <div
-          className='dashboard-stat'
-          style={{
-            background: 'linear-gradient(135deg, #eb3349 0%, #f45c43 100%)',
-          }}
-        >
-          <h3>Auth Status</h3>
-          <p>✅ Logged In</p>
+        <div className='p-4 rounded-lg text-white' style={{ background: 'linear-gradient(135deg, #eb3349 0%, #f45c43 100%)' }}>
+          <h3 className='text-sm opacity-80'>Auth Status</h3>
+          <p className='text-2xl font-bold'>✅ Logged In</p>
         </div>
       </div>
 
-      <div className='card' style={{ marginTop: '2rem' }}>
-        <h3 className='card-title'>Registered Users</h3>
+      <div className='bg-white p-6 rounded-lg shadow'>
+        <h3 className='font-semibold mb-4'>Registered Users</h3>
 
         {isLoading ? (
-          <div className='loading'>
-            <div className='spinner'></div>
+          <div className='flex justify-center items-center py-8'>
+            <div className='w-10 h-10 border-4 border-gray-200 border-t-pink-600 rounded-full animate-spin'></div>
           </div>
         ) : error ? (
-          <div className='form-error'>{error}</div>
+          <div className='bg-red-50 text-red-600 p-3 rounded mb-4 text-center'>{error}</div>
         ) : users.length === 0 ? (
           <p>No users found. Make sure the API is implemented!</p>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table className='w-full border-collapse'>
             <thead>
-              <tr style={{ borderBottom: '2px solid #eee' }}>
-                <th style={{ textAlign: 'left', padding: '0.75rem' }}>ID</th>
-                <th style={{ textAlign: 'left', padding: '0.75rem' }}>Name</th>
-                <th style={{ textAlign: 'left', padding: '0.75rem' }}>Email</th>
+              <tr className='border-b-2 border-slate-100'>
+                <th className='text-left p-3'>ID</th>
+                <th className='text-left p-3'>Name</th>
+                <th className='text-left p-3'>Email</th>
               </tr>
             </thead>
             <tbody>
               {users.map((u) => (
-                <tr key={u.id} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: '0.75rem' }}>{u.id}</td>
-                  <td style={{ padding: '0.75rem' }}>{u.name}</td>
-                  <td style={{ padding: '0.75rem' }}>{u.email}</td>
+                <tr key={u.id} className='border-b border-slate-100'>
+                  <td className='p-3'>{u.id}</td>
+                  <td className='p-3'>{u.name}</td>
+                  <td className='p-3'>{u.email}</td>
                 </tr>
               ))}
             </tbody>

@@ -31,8 +31,8 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   // Show loading while checking authentication
   if (isLoading) {
     return (
-      <div className='loading'>
-        <div className='spinner'></div>
+      <div className='flex justify-center items-center py-8'>
+        <div className='w-10 h-10 border-4 border-gray-200 border-t-pink-600 rounded-full animate-spin'></div>
       </div>
     );
   }

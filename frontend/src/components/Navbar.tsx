@@ -5,26 +5,30 @@ function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
 
   return (
-    <nav className='navbar'>
-      <Link to='/' className='navbar-brand'>
+    <nav className='bg-[#1a1a2e] text-white px-6 py-4 flex items-center justify-between'>
+      <Link to='/' className='text-xl font-bold'>
         🔐 Auth Learning
       </Link>
-      <div className='navbar-links'>
-        <Link to='/'>Home</Link>
+
+      <div className='flex items-center gap-4'>
+        <Link to='/' className='px-3 py-1 rounded hover:bg-white/10'>Home</Link>
 
         {isAuthenticated ? (
           <>
-            <Link to='/dashboard'>Dashboard</Link>
-            <Link to='/profile'>Profile</Link>
-            <span style={{ color: '#fff', opacity: 0.7 }}>
-              Welcome, {user?.name}
-            </span>
-            <button onClick={logout}>Logout</button>
+            <Link to='/dashboard' className='px-3 py-1 rounded hover:bg-white/10'>Dashboard</Link>
+            <Link to='/profile' className='px-3 py-1 rounded hover:bg-white/10'>Profile</Link>
+            <span className='text-white/80'>Welcome, {user?.name}</span>
+            <button
+              onClick={logout}
+              className='bg-pink-600 hover:bg-pink-500 text-white px-3 py-1 rounded'
+            >
+              Logout
+            </button>
           </>
         ) : (
           <>
-            <Link to='/login'>Login</Link>
-            <Link to='/signup'>Sign Up</Link>
+            <Link to='/login' className='px-3 py-1 rounded hover:bg-white/10'>Login</Link>
+            <Link to='/signup' className='px-3 py-1 rounded bg-pink-600 hover:bg-pink-500 text-white'>Sign Up</Link>
           </>
         )}
       </div>

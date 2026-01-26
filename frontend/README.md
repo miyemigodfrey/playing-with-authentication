@@ -17,6 +17,13 @@ npm run build
 
 App runs on `http://localhost:5173`
 
+### Tailwind setup
+
+Tailwind/PostCSS are added as dev dependencies. After `npm install`, the project is ready — Vite will use PostCSS automatically. If you need to regenerate the Tailwind config locally, run:
+
+```bash
+npx tailwindcss init -p
+```
 > ⚠️ Make sure the backend is running on `http://localhost:3000` first!
 
 ## 🎯 Learning Tasks (TODOs)

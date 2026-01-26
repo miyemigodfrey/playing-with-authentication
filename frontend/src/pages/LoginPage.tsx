@@ -70,23 +70,23 @@ function LoginPage() {
   };
 
   return (
-    <div className='page'>
-      <div className='form-container'>
-        <h2 className='form-title'>Login</h2>
+    <div className='min-h-screen flex items-center justify-center p-6'>
+      <div className='bg-white p-8 rounded-lg shadow-md max-w-md w-full'>
+        <h2 className='text-2xl text-gray-900 font-semibold mb-4 text-center'>Login</h2>
 
-        <div className='todo-notice'>
-          <h4>🎯 Learning Task</h4>
-          <p>
+        <div className='bg-yellow-50 border border-yellow-200 rounded p-4 mb-4'>
+          <h4 className='font-medium mb-1'>🎯 Learning Task</h4>
+          <p className='text-sm text-yellow-800'>
             This form calls <code>loginApi</code> from <code>authApi.ts</code>.
             Implement the API function to make it work!
           </p>
         </div>
 
-        {error && <div className='form-error'>{error}</div>}
+        {error && <div className='bg-red-50 text-red-600 p-3 rounded mb-4 text-center'>{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='email'>Email</label>
+          <div className='mb-4'>
+            <label htmlFor='email' className='block mb-2 text-sm font-medium text-gray-700'>Email</label>
             <input
               type='email'
               id='email'
@@ -94,11 +94,12 @@ function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder='admin@abc.com'
               required
+              className='w-full p-3 border border-gray-200 rounded focus:border-pink-500 outline-none'
             />
           </div>
 
-          <div className='form-group'>
-            <label htmlFor='password'>Password</label>
+          <div className='mb-4'>
+            <label htmlFor='password' className='block mb-2 text-sm font-medium text-gray-700'>Password</label>
             <input
               type='password'
               id='password'
@@ -106,16 +107,17 @@ function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Enter your password'
               required
+              className='w-full p-3 border border-gray-200 rounded focus:border-pink-500 outline-none'
             />
           </div>
 
-          <button type='submit' className='form-button' disabled={isLoading}>
+          <button type='submit' className='w-full p-3 bg-pink-600 text-white rounded hover:bg-pink-500 disabled:bg-gray-300' disabled={isLoading}>
             {isLoading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 
-        <p className='form-link'>
-          Don't have an account? <Link to='/signup'>Sign up</Link>
+        <p className='text-center mt-4 text-sm text-gray-600'>
+          Don't have an account? <Link to='/signup' className='text-pink-600 hover:underline'>Sign up</Link>
         </p>
       </div>
     </div>

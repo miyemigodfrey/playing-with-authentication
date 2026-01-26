@@ -49,48 +49,42 @@ function ProfilePage() {
 
   if (isLoading) {
     return (
-      <div className='page'>
-        <div className='loading'>
-          <div className='spinner'></div>
-        </div>
+      <div className='flex justify-center items-center py-8'>
+        <div className='w-10 h-10 border-4 border-gray-200 border-t-pink-600 rounded-full animate-spin'></div>
       </div>
     );
   }
 
   return (
-    <div className='page'>
-      <h1 className='page-title'>My Profile</h1>
-      <p className='page-description'>
-        View and manage your account information.
-      </p>
-
-      <div className='todo-notice'>
-        <h4>🎯 Learning Task</h4>
-        <p>
-          This page fetches your profile from a protected endpoint. Implement{' '}
-          <code>getProfileApi</code> in <code>authApi.ts</code> to see your
-          profile!
-        </p>
+    <div className='space-y-6'>
+      <div>
+        <h1 className='text-2xl font-semibold'>My Profile</h1>
+        <p className='text-slate-600'>View and manage your account information.</p>
       </div>
 
-      {error && <div className='form-error'>{error}</div>}
+      <div className='bg-yellow-50 border border-yellow-200 rounded p-4'>
+        <h4 className='font-medium'>🎯 Learning Task</h4>
+        <p className='text-sm text-yellow-800'>This page fetches your profile from a protected endpoint. Implement <code>getProfileApi</code> in <code>authApi.ts</code> to see your profile!</p>
+      </div>
 
-      <div className='card'>
-        <h3 className='card-title'>Account Information</h3>
+      {error && <div className='bg-red-50 text-red-600 p-3 rounded mb-4 text-center'>{error}</div>}
+
+      <div className='bg-white p-6 rounded-lg shadow'>
+        <h3 className='font-semibold mb-4'>Account Information</h3>
 
         {profile ? (
-          <div className='profile-info'>
-            <div className='profile-field'>
-              <label>ID:</label>
-              <span>{profile.id}</span>
+          <div className='grid gap-4'>
+            <div className='flex border-b pb-3'>
+              <div className='w-24 font-medium text-slate-600'>ID:</div>
+              <div>{profile.id}</div>
             </div>
-            <div className='profile-field'>
-              <label>Name:</label>
-              <span>{profile.name}</span>
+            <div className='flex border-b pb-3'>
+              <div className='w-24 font-medium text-slate-600'>Name:</div>
+              <div>{profile.name}</div>
             </div>
-            <div className='profile-field'>
-              <label>Email:</label>
-              <span>{profile.email}</span>
+            <div className='flex border-b pb-3'>
+              <div className='w-24 font-medium text-slate-600'>Email:</div>
+              <div>{profile.email}</div>
             </div>
           </div>
         ) : (
@@ -98,24 +92,12 @@ function ProfilePage() {
         )}
       </div>
 
-      <div className='card' style={{ marginTop: '1rem' }}>
-        <h3 className='card-title'>🔒 Security Information</h3>
-        <p style={{ color: '#666', marginBottom: '1rem' }}>
-          Your session is secured with a JWT token. The token is sent with every
-          request to protected endpoints.
-        </p>
-        <div className='profile-field'>
-          <label>Token:</label>
-          <span
-            style={{
-              fontFamily: 'monospace',
-              fontSize: '0.75rem',
-              wordBreak: 'break-all',
-              color: '#666',
-            }}
-          >
-            {token ? `${token.substring(0, 50)}...` : 'No token'}
-          </span>
+      <div className='bg-white p-6 rounded-lg shadow'>
+        <h3 className='font-semibold mb-2'>🔒 Security Information</h3>
+        <p className='text-slate-600 mb-4'>Your session is secured with a JWT token. The token is sent with every request to protected endpoints.</p>
+        <div className='flex'>
+          <div className='w-24 font-medium text-slate-600'>Token:</div>
+          <div className='font-mono text-sm text-slate-700 break-all'>{token ? `${token.substring(0, 50)}...` : 'No token'}</div>
         </div>
       </div>
     </div>
