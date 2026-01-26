@@ -46,12 +46,26 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     // Your implementation here...
 
+    const storedToken = localStorage.getItem('token');
+    const storedUser = localStorage.getItem('user');
+
+    if (storedToken && storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+        setToken(storedToken);
+      } catch (e) {
+        console.error('Failed to parse user or token from localStorage', e);
+      }
+    }
+
     setIsLoading(false);
   }, []);
 
   // TODO: Implement login function
   const login = (newToken: string, newUser: User) => {
+
     /**
+     *
      * 🎯 TODO FOR LEARNERS:
      *
      * Implement the login function to save the authentication state.
@@ -63,7 +77,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
      */
 
     // Your implementation here...
-    console.log('TODO: Implement login function', { newToken, newUser });
+    
+    localStorage.setItem('token', newToken);
+    localStorage.setItem('user', JSON.stringify(newUser));
+    setToken(newToken);
+    setUser(newUser);
+
+
+    console.log('TODO: Implement login function  ........DONE', { newToken, newUser });
   };
 
   // TODO: Implement logout function
@@ -80,7 +101,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
      */
 
     // Your implementation here...
-    console.log('TODO: Implement logout function');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setToken(null);
+    setUser(null);
+    console.log('TODO: Implement logout function  ........DONE');
   };
 
   const value = {
