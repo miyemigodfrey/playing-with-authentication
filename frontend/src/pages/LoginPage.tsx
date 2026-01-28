@@ -21,34 +21,11 @@ function LoginPage() {
     navigate(from, { replace: true });
   }
 
+  
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
-
-    /**
-     * 🎯 TODO FOR LEARNERS:
-     *
-     * Implement the login form submission.
-     *
-     * Steps:
-     * 1. Call the loginApi function with email and password
-     * 2. If successful, call the login function from AuthContext
-     *    with the token and user from the response
-     * 3. Navigate to the 'from' path (or dashboard)
-     * 4. Handle any errors by setting the error state
-     *
-     * Example:
-     * try {
-     *   const response = await loginApi({ email, password });
-     *   login(response.access_token, response.user);
-     *   navigate(from, { replace: true });
-     * } catch (err) {
-     *   setError(err.message || 'Login failed');
-     * } finally {
-     *   setIsLoading(false);
-     * }
-     */
 
     try {
       // TODO: Implement the login logic here
@@ -75,10 +52,9 @@ function LoginPage() {
         <h2 className='text-2xl text-gray-900 font-semibold mb-4 text-center'>Login</h2>
 
         <div className='bg-yellow-50 border border-yellow-200 rounded p-4 mb-4'>
-          <h4 className='font-medium mb-1'>🎯 Learning Task</h4>
+          <h4 className='font-medium mb-1'>Hello Fan</h4>
           <p className='text-sm text-yellow-800'>
-            This form calls <code>loginApi</code> from <code>authApi.ts</code>.
-            Implement the API function to make it work!
+            Welcome to our Exclusive Dashboard login if you have an account, if not  click the sign up button below to register!
           </p>
         </div>
 

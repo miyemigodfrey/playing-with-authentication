@@ -7,6 +7,7 @@ import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
 import ProfilePage from './pages/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
+import UnauthorizedPage from './pages/UnauthorizedPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path='/' element={<HomePage />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
+              <Route path='/unauthorized' element={<UnauthorizedPage />} />
 
               {/* Protected Routes - TODO: Implement ProtectedRoute component */}
               <Route

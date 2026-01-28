@@ -33,7 +33,6 @@ function DashboardPage() {
 
       try {
         // TODO: Implement fetching users
-        console.log('TODO: Fetch all users using getAllUsersApi');
         const data = await getAllUsersApi(token);
         setUsers(data);
       } catch (err: any) {
@@ -51,11 +50,6 @@ function DashboardPage() {
       <div>
         <h1 className='text-2xl font-semibold'>Dashboard</h1>
         <p className='text-slate-600'>Welcome to your protected dashboard, {user?.name}! 🎉</p>
-      </div>
-
-      <div className='bg-yellow-50 border border-yellow-200 rounded p-4'>
-        <h4 className='font-medium'>🎯 Learning Task</h4>
-        <p className='text-sm text-yellow-800'>This page fetches data from a protected API endpoint. Implement <code>getAllUsersApi</code> in <code>authApi.ts</code> to see the user list!</p>
       </div>
 
       <div className='grid gap-6 grid-cols-1 md:grid-cols-3'>

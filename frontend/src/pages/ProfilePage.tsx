@@ -34,7 +34,6 @@ function ProfilePage() {
 
       try {
         // TODO: Implement fetching profile
-        console.log('TODO: Fetch profile using getProfileApi');
         const data = await getProfileApi(token);
         setProfile(data);
       } catch (err: any) {
@@ -60,11 +59,6 @@ function ProfilePage() {
       <div>
         <h1 className='text-2xl font-semibold'>My Profile</h1>
         <p className='text-slate-600'>View and manage your account information.</p>
-      </div>
-
-      <div className='bg-yellow-50 border border-yellow-200 rounded p-4'>
-        <h4 className='font-medium'>🎯 Learning Task</h4>
-        <p className='text-sm text-yellow-800'>This page fetches your profile from a protected endpoint. Implement <code>getProfileApi</code> in <code>authApi.ts</code> to see your profile!</p>
       </div>
 
       {error && <div className='bg-red-50 text-red-600 p-3 rounded mb-4 text-center'>{error}</div>}
