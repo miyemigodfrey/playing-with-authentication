@@ -39,6 +39,7 @@ function LoginPage() {
 
       // Navigate to the intended page
       navigate(from, { replace: true });
+      
     } catch (err: any) {
       setError(err.message || 'Login failed. Please try again.');
     } finally {
