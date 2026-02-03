@@ -7,9 +7,11 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
+import { AuthProvider } from './context/AuthProvider';
 
 function App() {
   return (
+    <AuthProvider>
     <Router>
       <main>
         <Navbar/>
@@ -23,6 +25,7 @@ function App() {
       </main>
      
     </Router>
+    </AuthProvider>
   );
 }
 
