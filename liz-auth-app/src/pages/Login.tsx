@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { loginApi } from "../services/authApi";
@@ -13,10 +13,11 @@ export default function LoginPage() {
 	const location = useLocation();
 
 	const from = location.state?.from?.pathname || "/dashboard";
-
-	if (isAuthenticated) {
-		navigate(from, { replace: true });
-	}
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate(from, { replace: true });
+		}
+	}, [isAuthenticated, navigate, from]);
 
 	const handleSubmit = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
